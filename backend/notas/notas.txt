@@ -1,0 +1,16 @@
+Mongoose
+Se definen modelos con la forma que tendran
+- Diferentes metodos para CRUD
+
+Handle:
+ - Se utiliza para guardar o convertir un nombre de usuario en unico
+
+Ctrl + J -> Para ocultar o mostrar la terminal
+
+Middleware
+-> Es un termino que se refiere a funciones que actuan como intermediarios
+entre dos componentes o sistemas de software.
+Es algo entre dos partes que los va a comunicar.
+Middleware en express.
+
+Middleware global y a nivel de ruta -> Esto es que las funciones se pueden colocar desde el router
