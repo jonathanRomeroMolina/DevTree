@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { isAxiosError } from 'axios'
+import { toast, Toaster } from 'sonner'
 import type { RegisterForm } from '../types'
 import { ErrorMessage } from '../components/ErrorMessage';
+import api from '../config/axios'
 
 export default function RegisterView() {
 
@@ -13,13 +16,21 @@ export default function RegisterView() {
         password_confirmation: ''
     }
 
-    const { register, watch, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
+    const { register, watch, reset, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
 
     const password = watch('password'); //Esto es como para auditar que campo tendra que ver
     //console.log(password);
     
-    const handleRegister = (formData : RegisterForm) => { //Esta es la forma de extraer los datos del form de una manera muy sencilla
-        console.log(formData);
+    const handleRegister = async (formData : RegisterForm) => { //Esta es la forma de extraer los datos del form de una manera muy sencilla
+        try {
+            const {data} = await api.post(`/auth/register`, formData) //con el api. va hacia el componente
+            toast(data)
+            reset()
+        } catch (error) {
+            if (isAxiosError(error) && error.response) {
+                toast.error(error.response.data.error)
+            }
+        }
     }
 
     return (

@@ -1,7 +1,7 @@
 import {Router} from 'express'; 
 import { body } from 'express-validator';
 
-import { createAccount, login } from './handlers';
+import { createAccount, getUser, login } from './handlers';
 import { handleInputErrors } from './middleware/validation';
 //Router permite configurar un objeto con todas las rutas que despues se agregan a a la aplicacino principal
 
@@ -36,6 +36,8 @@ router.post('/auth/login',
         .withMessage('El password es obligatorio! '),
     login
 )
+
+router.get('/user', getUser)
 
 
 export default router;  

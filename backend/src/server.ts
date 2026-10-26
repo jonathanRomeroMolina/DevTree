@@ -1,11 +1,15 @@
 import express from 'express'; //Esto es ES6, lo que se usa en el front
+import cors from 'cors'
 import 'dotenv/config'
 import router from './router';
 import { connectDb } from "./config/db";
-
-const app = express(); //Esto es la instancia del servidor
+import { corsConfig } from './config/cors';
 
 connectDb();
+const app = express(); //Esto es la instancia del servidor
+
+//cors
+app.use(cors(corsConfig))
 
 //leer datos de formularios
 app.use(express.json());    //Esto es un ejemplo de middleware

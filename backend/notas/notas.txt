@@ -14,3 +14,6 @@ Es algo entre dos partes que los va a comunicar.
 Middleware en express.
 
 Middleware global y a nivel de ruta -> Esto es que las funciones se pueden colocar desde el router
+
+CORS
+-> Compartir recursos entre diferentes origines (Temas de seguridad)
